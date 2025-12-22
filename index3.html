@@ -28,5 +28,55 @@
 		<br>
 		<strong>Info	21.12.2025</strong>
 		<p>The project will start in January :)</p>
+		<br>
+		<b>Stepper Motor 28byj48    22.12.2025</b>
+		<p>While I wait for parts for my electric arc, I did one easy example with 28byj48 stepper motor & ULN 2003 DM.</p>
+		<img src="motor.jpg" width="500" height="400">
+		<p><i>Okay... but what is this lol?</i></p>
+		<p>Basically, this big metal thingy is a <b><a href="https://en.wikipedia.org/wiki/Unipolar_stepper_motor">unipolar motor</a></b>. We used our circuit (ULN 2003 - green thingy) to run this bad boy. Everything is plugged to arduino microcontroller to power this scheme up.</p>
+		<p><ins>Used components:</ins></p>
+        <p><b>- </b>Step Motor 28Bbyj-48</p>
+        <p><b>- </b>Stepper Motor Drive <i>(ULN 2003)</i></p>
+        <p><b>- </b>Microcontroller</p>
+        <p><b>- </b>Jumper wires <i>(M/F)</i></p>
+        <p><b>- </b>USB cable A/B <i>(For your microcontroller)</i></p>
+        <p><i>That's it?</i></p>
+        <p>Nah, you must programm this bitch to work <b>as you want</b> lol. Use ARDUINO IDE to do so.
+        <p>Example code by Tom Igoe:</p>
+        <br>
+        <article>
+		 <pre>
+        #include &lt;Stepper.h&gt;
+
+const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution
+// for your motor
+
+// initialize the stepper library on pins 8 through 11:
+Stepper myStepper(stepsPerRevolution, 8, 9, 10, 11);
+
+void setup() {
+  // set the speed at 60 rpm:
+  myStepper.setSpeed(60);
+  // initialize the serial port:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // step one revolution  in one direction:
+  Serial.println("clockwise");
+  myStepper.step(stepsPerRevolution);
+  delay(500);
+
+  // step one revolution in the other direction:
+  Serial.println("counterclockwise");
+  myStepper.step(-stepsPerRevolution);
+  delay(500);
+}
+        </pre>
+		</article>
+        <br>
+		<p>And you have it!</p>
+        <p>My expirience:</p>
+        <p>I would prefer to use this stepper motor with a seperate power supply and a breadbord but i didn't have one :< I'll gladly come back to the stepper motors topic but these are ideas for the future; for now I focus on one thing at a time.</p>
     </body>
 </html>
